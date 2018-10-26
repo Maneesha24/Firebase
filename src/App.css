@@ -1,4 +1,13 @@
-.App{
+/* .App{
+  height: 100vh;
+  width:100vw;
+  display: flex;
+  color: gray;
+  background-color: black;
+  font-family: 'Roboto', sans-serif;
+} */
+
+.landing{
   height: 100vh;
   width:100vw;
   display: flex;
@@ -10,6 +19,7 @@
 .sideBar{
   border-right: 2px solid gray;
   width: 15vw;
+  height: 100vh;
   display: flex;
   padding-top: 1rem;
   padding-bottom: 1rem;

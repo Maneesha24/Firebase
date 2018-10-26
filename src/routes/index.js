@@ -3,15 +3,18 @@ import { Route, Switch } from 'react-router-dom';
 import Dashboard from '../pages/dashboard';
 import Landing from '../pages/landing';
 import Schools from '../pages/schools';
+import PrivateRoute from './privateRoutes';
+import Home from '../pages/home';
 
 class Routes extends Component {
   render() {
     return (
       <div>
         <Switch>
-             <Route path = "/dashboard/schools" component = {Schools} />
-              <Route path="/dashboard" component={Dashboard} />
-              <Route path="/" component={Landing} />
+              {/* <PrivateRoute path = "/landing/schools" component = {Schools} />
+              <PrivateRoute path="/landing/dashboard" component={Dashboard} /> */}
+              <PrivateRoute path = "/landing" component = {Landing} />
+              <Route exact path="/" component={Home} />
 
             </Switch>
       </div>

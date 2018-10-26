@@ -7,16 +7,16 @@ class SideBar extends Component {
     return (
       <div className= "sideBar">
       <div className = "productName">
-      <i class="fa fa-star" aria-hidden="true"></i><h2>KIDDO</h2>
+      <i className="fa fa-star" aria-hidden="true"></i><h2>KIDDO</h2>
       <hr />
 
       </div>
       <nav>
         <ul>
-          <Link to = "/dashboard"><li><i class="fas fa-tachometer-alt" style={{color:"skyblue"}}></i>Dashboard</li></Link>
-          <Link to = "/dashboard/schools"><li><i class="fas fa-school"></i>Schools</li></Link>
-          <li><i class="fas fa-user-circle"></i>Profile</li>
-          <li><i class="fas fa-bell"></i>Notifications</li>
+          <Link to = "/landing/dashboard"><li><i className="fas fa-tachometer-alt" style={{color:"skyblue"}}></i>Dashboard</li></Link>
+          <Link to = "/landing/schools"><li><i className="fas fa-school"></i>Schools</li></Link>
+          <li><i className="fas fa-user-circle"></i>Profile</li>
+          <li><i className="fas fa-bell"></i>Notifications</li>
         </ul>
       </nav>
       <div className="productName">
