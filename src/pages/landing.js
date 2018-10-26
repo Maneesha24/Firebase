@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import Header from '../components/header';
 import SideBar from '../components/sideBar';
-import Routes from '../routes';
 import PrivateRoute from '../routes/privateRoutes';
 import Dashboard from './dashboard';
 import School from './schools';
+import { Switch } from 'react-router-dom';
 
 
 class Landing extends Component {
@@ -16,8 +16,10 @@ class Landing extends Component {
       </div>
        <div>
         <Header /> 
+        <Switch>
         <PrivateRoute path = "/landing/schools" component = {School}/>
         <PrivateRoute path = "/landing/dashboard" component = {Dashboard}/>
+        </Switch>
        </div>
       </div>
     );

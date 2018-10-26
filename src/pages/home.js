@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import Cookies from 'universal-cookie';
-import { Redirect } from 'react-router-dom'
 import { withRouter } from 'react-router-dom'
 
 const cookies = new Cookies();
@@ -10,7 +8,8 @@ class Home extends Component {
 
     state = {
         phone: '',
-        password: ''
+        password: '',
+        showLogin: true
     }
 
     onPhoneChange = (event) => {
@@ -37,24 +36,29 @@ class Home extends Component {
         const data = await res.json();
         if(data.success){
             console.log(data);
+            cookies.set('Kiddo', data.token)
             this.setState({
                 phone:'',
-                password: ''
-                // showLogin: false
+                password: '',
+                showLogin: false
             })
-            cookies.set('Kiddo', data.token); 
-            if(cookies.get('Kiddo')== data.token){
-                console.log('Reeed');
-                window.location.reload();
-                this.props.history.push('/landing')
-            }      
+          
         }
+
+        if(cookies.get('Kiddo' === data.token)){
+            console.log('Reeed');
+            this.props.history.push('/landing');
+        }     
 
 
     }
 
   render() {
 
+
+    if(!this.state.isLoading){
+        return <div>Loading...</div>
+    }
       
     return (
       <div className="home">

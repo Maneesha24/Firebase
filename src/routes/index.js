@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
-import Dashboard from '../pages/dashboard';
 import Landing from '../pages/landing';
-import Schools from '../pages/schools';
 import PrivateRoute from './privateRoutes';
 import Home from '../pages/home';
 

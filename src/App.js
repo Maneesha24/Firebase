@@ -1,12 +1,7 @@
 import React, { Component } from 'react';
-import Header from './components/header';
 import Routes from './routes';
 import './App.css';
-import SideBar from './components/sideBar';
-import { Route } from 'react-router-dom';
-import Home from './pages/home';
-import PrivateRoute from './routes/privateRoutes';
-import Landing from './pages/landing';
+import { Switch } from 'react-router-dom';
 
 
 class App extends Component {
@@ -17,7 +12,9 @@ class App extends Component {
        {/* <SideBar />
        <div>
         <Header /> */}
+        <Switch>
        <Routes />
+       </Switch>
        </div>
       //  </div>
     );
