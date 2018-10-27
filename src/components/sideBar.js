@@ -15,8 +15,8 @@ class SideBar extends Component {
         <ul>
           <Link to = "/landing/dashboard"><li><i className="fas fa-tachometer-alt" style={{color:"skyblue"}}></i>Dashboard</li></Link>
           <Link to = "/landing/schools"><li><i className="fas fa-school" style={{color:"yellowgreen"}}></i>Schools</li></Link>
-          <li><i className="fas fa-user-circle"></i>Profile</li>
-          <li><i className="fas fa-bell"></i>Notifications</li>
+          <Link to = "/landing/profile"><li><i className="fas fa-user-circle"></i>Profile</li></Link>
+          <Link to = "/landing/notifications"><li><i className="fas fa-bell"></i>Notifications</li></Link>
         </ul>
       </nav>
       <div className="productName">

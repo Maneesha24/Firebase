@@ -34,7 +34,7 @@
   align-items: center;
 }
 
-.dashboard,.schools{
+.dashboard,.schools,.profile,.notifications{
   background-color: #232426;
   margin-top: 1rem;
   padding: 2rem;
@@ -81,4 +81,75 @@ section p{
 
 .count{
   font-size: 1.5rem;
+}
+
+.profile{
+  background-color: #232426;
+}
+
+
+.user-image{
+  border:1px solid gray;
+  text-align: center;
+  padding: 2rem;
+}
+
+.user-pic{
+  border: 1px solid gray;
+  padding: 4rem;
+  border-radius: 40%;
+}
+
+.input-fields{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.input-fields-pic{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 50vw;
+}
+
+.notifications-firebase-input{
+  display: flex;
+  align-items: center;
+}
+
+.update-pic{
+  width: 8rem;
+  height: 8rem;
+  border-radius: 40%;
+  border: 2px solid gray;
+}
+
+.radio-btns{
+  display: flex;
+  background-color:  #232426;
+  padding: 2rem;
+  color: white;
+}
+
+
+.radio-btns input{
+  margin-left: 2rem;
+}
+
+.notifications section{
+  background-color: black;
+  padding-top: 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+
+}
+
+
+.notifications-firebase-input{
+  background-color:  #232426;
+  padding-top: 2rem; 
+  color: white;
+  padding-left: 2rem;
 }

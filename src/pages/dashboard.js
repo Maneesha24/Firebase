@@ -8,7 +8,7 @@ class Dashboard extends Component {
 
   state = {
     users: [],
-    isLoading: false
+    isLoading: true
   }
 
   componentDidMount = async () => {
@@ -24,14 +24,14 @@ class Dashboard extends Component {
     const data = await res.json();
     console.log(data);
     if(data.success){
-      this.setState({ users: data, isLoading: true })
+      this.setState({ users: data, isLoading: false })
     }
   }
 
 
   render() {
     
-    if(!this.state.isLoading){
+    if(this.state.isLoading){
       return <div>Loading...</div>
   }
 

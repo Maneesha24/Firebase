@@ -56,7 +56,7 @@ class Home extends Component {
   render() {
 
 
-    if(!this.state.isLoading){
+    if(this.state.isLoading){
         return <div>Loading...</div>
     }
       

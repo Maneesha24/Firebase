@@ -6,7 +6,7 @@ class Header extends Component {
     return (
       <div className= "header">
       <div>
-      <input placeholder = "Search here .."/>
+      <input placeholder = "Search here .." type = "text" className = "input"/>
       </div>
       <div className="profile-image">
           <img src = "" alt = "profile" />

@@ -9,14 +9,10 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-       {/* <SideBar />
-       <div>
-        <Header /> */}
         <Switch>
        <Routes />
        </Switch>
        </div>
-      //  </div>
     );
   }
 }

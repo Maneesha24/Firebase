@@ -3,8 +3,10 @@ import Header from '../components/header';
 import SideBar from '../components/sideBar';
 import PrivateRoute from '../routes/privateRoutes';
 import Dashboard from './dashboard';
+import Profile from './profile';
 import School from './schools';
 import { Switch } from 'react-router-dom';
+import Notifications from './notifications';
 
 
 class Landing extends Component {
@@ -17,6 +19,8 @@ class Landing extends Component {
        <div>
         <Header /> 
         <Switch>
+        <PrivateRoute path = "/landing/notifications" component = {Notifications}/>
+        <PrivateRoute path = "/landing/profile" component = {Profile}/>
         <PrivateRoute path = "/landing/schools" component = {School}/>
         <PrivateRoute path = "/landing/dashboard" component = {Dashboard}/>
         </Switch>
