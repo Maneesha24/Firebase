@@ -135,7 +135,7 @@ table tbody tr {
 article{
   display: flex;
   justify-content: space-evenly;
-  padding: 2rem;
+  padding: 1rem;
   /* background-color: white; */
 }
 

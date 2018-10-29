@@ -26,7 +26,7 @@ class Header extends Component {
     if(data.success){
       this.setState({ profile: data.user, isLoading: true })
     }
-    // console.log(data);
+    console.log(data);
     // console.log(this.state.profile[0]);
   }
 

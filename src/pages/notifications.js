@@ -63,26 +63,21 @@ class Notifications extends React.Component{
 
                 <section>
                     <h2>Add Details</h2>
-<form>
+<form encType = "multipart/form-data" action = "/api/super-admin/push" method =  "post">
     <div className = "notifications-firebase-input">
         <p>Choose file* : </p>
-        <input type = "button" value = "Browse" />
-    </div>
-    <div className = "notifications-firebase-input">
-        <p>To* : </p>
-<input type = "text" className= "notification-firebase" value = {this.state.to} onChange={this.onToChange}/>
+        <input type = "file" name="logo" />
     </div>
     <div className = "notifications-firebase-input">
         <p>Title* : </p>
-<input type = "text" className= "notification-firebase" value = {this.state.title} onChange={this.onTitleChange} />
+<input type = "text" className= "notification-firebase" value = {this.state.title} onChange={this.onTitleChange} className = "input" placeholder = "Enter title"/>
     </div>
     <div className = "notifications-firebase-input">
         <p>Message* : </p>
-<input type = "text" className= "notification-firebase" value = {this.state.content} onChange={this.onContentChange} />
+<input type = "text" className= "notification-firebase" value = {this.state.content} onChange={this.onContentChange} className = "input"  placeholder = "Enter content"/>
     </div>
     <button type = "button" onClick = {this.onSubmit}>Submit</button>
 </form> 
-
 </section>
 
             </div>            

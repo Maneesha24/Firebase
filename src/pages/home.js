@@ -21,7 +21,7 @@ class Home extends React.Component {
 
     onLogin = async () => {
        
-        const res = await fetch('/api/users/login',{
+        const res = await fetch('/api/super-admin/login',{
             method: 'POST',
             credentials: 'include',
             headers:{

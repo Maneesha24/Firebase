@@ -1,7 +1,17 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
+import Cookies from 'universal-cookie';
+
+const cookies = new Cookies();
 
 class SideBar extends Component {
+
+  onLogout = () => {
+
+    cookies.remove('Kiddo');
+    this.props.history.push('/');
+    window.location.reload();
+  }
   
   render() {
     return (
@@ -22,8 +32,8 @@ class SideBar extends Component {
           <Link to = "/landing/notifications"><li><i className="fas fa-bell"></i>Notifications</li></Link>
         </ul>
       </nav>
-      <div className="productName">
-        <button>Logout</button>
+      <div className="productName logout">
+        <button onClick = {this.onLogout}>Logout</button>
       </div>
 
       </div>
@@ -31,4 +41,4 @@ class SideBar extends Component {
   }
 }
 
-export default SideBar;
+export default withRouter(SideBar);

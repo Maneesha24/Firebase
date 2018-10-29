@@ -93,7 +93,7 @@ padding-right: 1rem;
   align-items: center;
 }
 
-.dashboard,.schools,.profile,.notifications{
+.dashboard,.schools,.profile,.notifications,.schoolInfo{
   background-color: #232426;
   margin-top: 1rem;
   padding: 2rem;
@@ -150,7 +150,7 @@ section p{
 .user-image{
   border:1px solid gray;
   text-align: center;
-  padding: 2rem;
+  /* padding: 1rem; */
 }
 
 .user-pic{
@@ -210,4 +210,74 @@ section p{
   padding-top: 2rem; 
   color: white;
   padding-left: 2rem;
+}
+
+.profile section{
+  background-color: black;
+  padding: 3rem;
+  margin: 0.8rem;
+}
+
+section h4{
+  color: white;
+}
+
+.user-details{
+  display: flex;
+}
+
+
+.user-details div{
+  padding-right: 2rem;
+  color: white;
+  font-weight: bold;
+}
+
+.user-details input{
+  width: 350px;
+  margin-bottom: 1rem;
+}
+
+.user-details-indv{
+  display: flex;
+  flex-direction: column;
+}
+
+.profile input:focus{
+  border: 2px solid #e02a64;
+}
+
+.schoolInfo section{
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  background-color: black;
+  width: fit-content;
+  padding: 1rem;
+  border-radius: 5%;
+}
+
+
+.schoolInfo section i{
+ padding-right: 1rem;
+}
+
+.logout{
+  margin-bottom: 2rem;
+}
+
+.notifications input[type = "text"]{
+  width: 250px;
+  margin-left: 1rem;
+  margin-bottom: 0.3rem;
+}
+
+.school-branches{
+  display: flex;
+}
+
+
+.school-branches section{
+  margin-right: 1rem;
+  width: 250px;
 }

@@ -6,10 +6,18 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { BrowserRouter } from 'react-router-dom';
 import { initializeFirebase } from './pushNotifications';
+// import { Provider } from 'react-redux';
+// import { createStore } from 'redux';
+
+// import reducers from './reducers';
+
+// const store = createStore(reducers);
 
 ReactDOM.render(
   <BrowserRouter>
-    <App />
+   {/* <Provider store = {store}> */}
+   <App />
+   {/* </Provider> */}
   </BrowserRouter>,
   document.querySelector('#root')
 );
