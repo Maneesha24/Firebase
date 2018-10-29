@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Landing from '../pages/landing';
-import PrivateRoute from './privateRoutes';
 import Home from '../pages/home';
 
 class Routes extends Component {
@@ -11,9 +10,8 @@ class Routes extends Component {
         <Switch>
               {/* <PrivateRoute path = "/landing/schools" component = {Schools} />
               <PrivateRoute path="/landing/dashboard" component={Dashboard} /> */}
-              <PrivateRoute path = "/landing" component = {Landing} />
+              <Route path = "/landing" component = {Landing} />
               <Route exact path="/" component={Home} />
-
             </Switch>
       </div>
     );

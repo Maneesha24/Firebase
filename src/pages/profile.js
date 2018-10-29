@@ -2,6 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
+import Cookies from 'universal-cookie';
+
+const cookies = new Cookies();
+const cookie = cookies.get('Kiddo');
 
 const styles = theme => ({
   container: {
@@ -21,6 +25,35 @@ const styles = theme => ({
 });
 
 class Profile extends React.Component {
+
+  state = {
+    profile: [],
+    firstName: '',
+    lastName: '',
+    email: '',
+    password: '',
+    gender:''
+  }
+
+  componentDidMount = async() => {
+    const res = await fetch('/api/super-admin/profile',{
+      method: 'GET',
+      credentials: 'include',
+      withCredentials: true,
+      headers: {
+        'Authorization' : cookie,
+        'Content-Type' : 'application/json',
+      }
+    });
+    const data = await res.json();
+    if(data.success){
+      this.setState({ profile: data.user, isLoading: true })
+    }
+    console.log(data);
+    console.log(this.state.profile[0]);
+  }
+
+
   state = {
     name: 'Cat in the Hat',
     age: '',
@@ -35,6 +68,11 @@ class Profile extends React.Component {
   };
 
   render() {
+
+    if(!this.state.isLoading){
+      return <div>Loading...</div>
+  }
+
     const { classes } = this.props;
 
     return (
@@ -54,27 +92,11 @@ class Profile extends React.Component {
           margin="normal"
           variant="outlined"
         />
-        <div className = "update-pic">yyy</div>
-        {/* <TextField
-          id="outlined-email-input"
-          label="Username"
-          className={classes.textField}
-          type="text"
-          name="name"
-          autoComplete="name"
-          margin="normal"
-          variant="outlined"
-          style = {{color: 'green' }}
-        /> */}
-        {/* <TextField
-          id="outlined-password-input"
-          label="Password"
-          className={classes.textField}
-          type="password"
-          autoComplete="current-password"
-          margin="normal"
-          variant="outlined"
-        /> */}
+        <div className = "update-pic">
+        <img src = {this.state.profile[0].logo} style={{width: '120px',height: '150px',borderRadius : '50%',border : '3px groove #e02a64'}} alt = "profile"/>
+        </div>
+        
+
         </div>
         <div>
         <TextField
@@ -89,7 +111,7 @@ class Profile extends React.Component {
           style = {{color: 'green' }}
         />
         <TextField
-          id="outlined-email-input"
+          id="outlined1-email-input"
           label="Email"
           className={classes.textField}
           type="text"
@@ -100,7 +122,7 @@ class Profile extends React.Component {
           style = {{color: 'green' }}
         />
         <TextField
-          id="outlined-password-input"
+          id="outlined2-password-input"
           label="Password"
           className={classes.textField}
           type="password"
@@ -108,19 +130,10 @@ class Profile extends React.Component {
           margin="normal"
           variant="outlined"
         />
-        {/* <TextField
-          id="outlined-email-input"
-          label="Gender"
-          className={classes.textField}
-          type="text"
-          name="gender"
-          autoComplete="gender"
-          margin="normal"
-          variant="outlined" /> */}
         </div>
         <div>
         <TextField
-          id="outlined-email-input"
+          id="outlined3-email-input"
           label="Gender"
           className={classes.textField}
           type="text"
@@ -134,9 +147,10 @@ class Profile extends React.Component {
         </div>
       </form>
       </section>
-      <section class = "user-image">
-      <div className="user-pic">image</div>
-      <h4>Username</h4>
+      <section className = "user-image">
+      <div className="user-pic">
+      <img alt = "profile" src = {this.state.profile[0].logo} style={{width: '148px',borderRadius : '50%',border : '3px groove #e02a64'}}/></div>
+      <h4>{this.state.profile[0].firstName}</h4>
       <h4>Super Admin Panel</h4>
       <hr />
       <h1>KIDDO</h1>

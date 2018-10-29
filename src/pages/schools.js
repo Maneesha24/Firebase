@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Cookies from 'universal-cookie';
+import { Link } from 'react-router-dom';
 
 const cookies = new Cookies();
 const cookie = cookies.get('Kiddo');
@@ -47,14 +48,16 @@ class School extends Component {
                  <th>Logo</th>
                  <th>Name</th>
                  <th>Branches</th>
+                 <th>Info</th>
              </tr>
              </thead>
              <tbody>
              {this.state.schools.map(school =>  (
-                 <tr key = {school._id}>
+                    <tr key = {school._id}>
                     <td><div style ={{borderRadius: '10%',width:'fit-content'}}><img alt = "logo" src = {school.logo} style = {{width:'25px',height:'25px'}}/></div></td>
                     <td>{school.name}</td>
                     <td>{school.branches.length}</td>
+                    <Link to = {school._id}><td>Click here to see info</td></Link>
 
                  </tr>
              ))}

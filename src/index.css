@@ -17,6 +17,19 @@ ul{
   list-style: none;
 }
 
+button{
+  background-color: #e02a64;
+  color: white;
+  font-size: 1.1rem;
+  padding: 0.23rem;
+  margin: 1rem;
+}
+
+button:hover{
+  font-size: 1.12rem;
+  cursor: pointer;
+}
+
 li{
   padding-bottom: 2rem;
   font-weight: bold;
@@ -123,5 +136,11 @@ article{
   display: flex;
   justify-content: space-evenly;
   padding: 2rem;
-  background-color: white;
+  /* background-color: white; */
+}
+
+tbody a{
+  color: white;
+  padding: 0;
+  margin: 0;
 }

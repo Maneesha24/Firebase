@@ -1,6 +1,46 @@
 import React from 'react';
+import Cookies from 'universal-cookie';
+
+const cookies = new Cookies();
+const cookie = cookies.get('Kiddo');
 
 class Notifications extends React.Component{
+    state = {
+        title: '',
+        content: '',
+        to: ''
+    }
+
+    onTitleChange = (event) => {
+        this.setState({title: event.target.value})
+    }
+
+    onContentChange = (event) => {
+        this.setState({content: event.target.value})
+    }
+
+    onToChange = (event) => {
+        this.setState({to: event.target.value})
+    }
+
+    onSubmit = async() => {
+        const res = await fetch('/api/super-admin/push', {
+            method: 'POST',
+            headers: {
+                'Authorization': cookie,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                registration_token: this.state.to,
+                title: this.state.title,
+                content: this.state.content
+            })
+        });
+        const data = await res.json();
+        console.log(data);
+    }
+
+
     
     render(){
 
@@ -29,9 +69,18 @@ class Notifications extends React.Component{
         <input type = "button" value = "Browse" />
     </div>
     <div className = "notifications-firebase-input">
-        <p>Message* : </p>
-<input type = "text" className= "notification-firebase" />
+        <p>To* : </p>
+<input type = "text" className= "notification-firebase" value = {this.state.to} onChange={this.onToChange}/>
     </div>
+    <div className = "notifications-firebase-input">
+        <p>Title* : </p>
+<input type = "text" className= "notification-firebase" value = {this.state.title} onChange={this.onTitleChange} />
+    </div>
+    <div className = "notifications-firebase-input">
+        <p>Message* : </p>
+<input type = "text" className= "notification-firebase" value = {this.state.content} onChange={this.onContentChange} />
+    </div>
+    <button type = "button" onClick = {this.onSubmit}>Submit</button>
 </form> 
 
 </section>

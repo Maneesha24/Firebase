@@ -1,10 +1,9 @@
-import React, { Component } from 'react';
 import Cookies from 'universal-cookie';
-import { withRouter } from 'react-router-dom'
+import React from 'react';
 
 const cookies = new Cookies();
 
-class Home extends Component {
+class Home extends React.Component {
 
     state = {
         phone: '',
@@ -36,39 +35,31 @@ class Home extends Component {
         const data = await res.json();
         if(data.success){
             console.log(data);
-            cookies.set('Kiddo', data.token)
             this.setState({
                 phone:'',
                 password: '',
                 showLogin: false
             })
-          
-        }
-
-        if(cookies.get('Kiddo' === data.token)){
-            console.log('Reeed');
+            cookies.set('Kiddo', data.token);
             this.props.history.push('/landing');
-        }     
-
-
+            window.location.reload();
+        }
     }
 
   render() {
-
-
-    if(this.state.isLoading){
-        return <div>Loading...</div>
-    }
       
     return (
       <div className="home">
-      <input placeholder= "Enter phone number" name = "phone" value = {this.state.phone} onChange={this.onPhoneChange} /><br />
-      <input placeholder= "Enter password " name = "password" value={this.state.password} onChange={this.onPasswordChange}/><br />
-      <button  onClick={this.onLogin}>Submit</button>
+      <div>
+      <input type="text" className="input" placeholder = "Enter your mobile number" value = {this.state.phone} onChange={this.onPhoneChange}/><br />
+      <input type="password" className="input" placeholder = "Enter your password" value={this.state.password} onChange={this.onPasswordChange}/><br />
+      <button type = "button" onClick={this.onLogin}>Submit</button>
+      </div>
 
       </div>
     );
   }
 }
 
-export default withRouter(Home);
+  
+  export default Home;

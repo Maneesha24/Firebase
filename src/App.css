@@ -1,11 +1,70 @@
-/* .App{
+.App{
   height: 100vh;
   width:100vw;
   display: flex;
   color: gray;
-  background-color: black;
+  /* background-color: black; */
+  font-family: 'Roboto', sans-serif;
+}
+
+.productName{
+  text-align: center;
+}
+
+.product{
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.product i {
+padding-right: 1rem;
+}
+
+/* 
+.home{
+  height: 100vh;
+  width:100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: gray;
+  background-color:black;
   font-family: 'Roboto', sans-serif;
 } */
+
+
+/* HOME-PAGE STYLING */
+.home{
+  width: 100vw;
+  height: 100vh;
+  display: block;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.home::after {
+    content: "";
+    background: url('./images/background1.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    opacity: 0.5;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    z-index: -1;   
+  }
+
+
+.home input{
+  width: 300px;
+}
 
 .landing{
   height: 100vh;
@@ -39,7 +98,7 @@
   margin-top: 1rem;
   padding: 2rem;
   width: 80vw;
-  height: 82vh;
+  height: 83vh;
 }
 
 .profile-image{
@@ -95,9 +154,8 @@ section p{
 }
 
 .user-pic{
-  border: 1px solid gray;
-  padding: 4rem;
-  border-radius: 40%;
+  /* border: 1px solid gray; */
+  /* border-radius: 40%; */
 }
 
 .input-fields{
@@ -120,10 +178,10 @@ section p{
 }
 
 .update-pic{
-  width: 8rem;
+  /* width: 8rem;
   height: 8rem;
-  border-radius: 40%;
-  border: 2px solid gray;
+  border-radius: 40%; */
+  /* border: 2px solid gray; */
 }
 
 .radio-btns{

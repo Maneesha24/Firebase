@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Cookies from 'universal-cookie';
-import { askForPermissioToReceiveNotifications } from '../pushNotifications';
+// import { askForPermissioToReceiveNotifications } from '../pushNotifications';
 
 const cookies = new Cookies();
 const cookie = cookies.get('Kiddo');
@@ -78,9 +78,9 @@ class Dashboard extends Component {
 
           </div>
         </section>
-        <button onClick={askForPermissioToReceiveNotifications} >
+        {/* <button onClick={askForPermissioToReceiveNotifications} >
       Click here to recieve notification
-    </button>
+    </button> */}
       </div>
     );
   }
