@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Cookies from 'universal-cookie';
+
 // import { askForPermissioToReceiveNotifications } from '../pushNotifications';
 
 const cookies = new Cookies();
@@ -38,12 +39,17 @@ class Dashboard extends Component {
 
     return (
       <div className="dashboard">
+      <div className= "">
+      <h2>DASHBOARD</h2>
+      <hr />
+      </div>
+      <div className = "dashboard-content-info">
         <section>
           <div className = "dashboard-icons">
           <i className="fas fa-school" style = {{color : '#f44271'}}></i>
           </div>
           <div className = "dashboard-content">
-          <p className = "count">{this.state.users.schools.length}</p>
+          <h2 className = "count">{this.state.users.schools.length}</h2>
           <p>Schools</p>
 
           </div>
@@ -53,7 +59,7 @@ class Dashboard extends Component {
           <i className="fas fa-code-branch" style = {{color : 'wheat'}}></i>
           </div>
           <div className = "dashboard-content">
-          <p className = "count">{this.state.users.branches.length}</p>
+          <h2 className = "count">{this.state.users.branches.length}</h2>
           <p>Branches</p>
 
           </div>
@@ -63,7 +69,7 @@ class Dashboard extends Component {
           <i className="fas fa-hourglass-half" style = {{color : 'yellowgreen'}}></i>
           </div>
           <div className = "dashboard-content">
-          <p className = "count">{this.state.users.classRooms.length}</p>
+          <h2 className = "count">{this.state.users.classRooms.length}</h2>
           <p>classRooms</p>
 
           </div>
@@ -73,7 +79,7 @@ class Dashboard extends Component {
           <i className="fas fa-user-graduate" style = {{color : 'orange'}}></i>
           </div>
           <div className = "dashboard-content">
-          <p className = "count">{this.state.users.students.length}</p>
+          <h2 className = "count">{this.state.users.students.length}</h2>
           <p>Students</p>
 
           </div>
@@ -81,6 +87,7 @@ class Dashboard extends Component {
         {/* <button onClick={askForPermissioToReceiveNotifications} >
       Click here to recieve notification
     </button> */}
+      </div>
       </div>
     );
   }

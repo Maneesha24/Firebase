@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import Cookies from 'universal-cookie';
 import { Link } from 'react-router-dom';
+import TextField from '@material-ui/core/TextField';
+import { withStyles } from '@material-ui/core/styles';
+import PropTypes from 'prop-types';
+
 // import SearchInput, {createFilter} from 'react-search-input'
 
 // const KEYS_TO_FILTERS = ['this.state.schools.name']
@@ -8,6 +12,23 @@ import { Link } from 'react-router-dom';
 const cookies = new Cookies();
 const cookie = cookies.get('Kiddo');
 
+const styles = theme => ({
+  container: {
+    display: 'flex',
+    flexWrap: 'wrap',
+  },
+  textField: {
+    marginLeft: theme.spacing.unit,
+    marginRight: theme.spacing.unit,
+    width: 200,
+  },
+  dense: {
+    marginTop: 19,
+  },
+  menu: {
+    width: 200,
+  },
+});
 class School extends Component {
 
   state = {
@@ -39,6 +60,9 @@ class School extends Component {
   }
 
   render() {
+
+    const { classes } = this.props;
+
     if(!this.state.isLoading){
       return <div>Loading...</div>
   }
@@ -48,20 +72,22 @@ class School extends Component {
 
     return (
       <div className="schools">
-      {/* <input onChange={this.searchUpdated}/> */}
-      {/* {filteredEmails.map(school => {
-          return (
-            <div className="mail" key={school._id}>
-              <div className="from">{school.name}</div>
-              <div className="subject">{school.branches.length}</div>
+      <div>
+            <h2>SCHOOLS</h2>
+            <hr />
             </div>
-          )
-        })} */}
-        <main>
-            <h2>Schools Info</h2>
-            <h4>Show entries</h4>
-            <hr/>
-         <table>
+        <main className = "schools-list">
+            <div className = "schools-content">
+            <div>
+            <h4>Schools list</h4>
+            <TextField
+          id="standard-search"
+          label="Search"
+          type="search"
+          className={classes.textField}
+          margin="normal"
+        />   </div>    
+          <table>
              <thead>
              <tr>
                  <th>Logo</th>
@@ -84,10 +110,15 @@ class School extends Component {
 
              </tbody>
          </table>
+         </div>
         </main>
       </div>
     );
   }
 }
 
-export default School;
+School.propTypes = {
+  classes: PropTypes.object.isRequired,
+};
+
+export default withStyles(styles)(School);

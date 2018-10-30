@@ -1,10 +1,26 @@
 import React from 'react';
+import Button from '@material-ui/core/Button';
+import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
+import TextField from '@material-ui/core/TextField';
+
+
 import Cookies from 'universal-cookie';
 
 const cookies = new Cookies();
 const cookie = cookies.get('Kiddo');
 
+const styles = theme => ({
+    button: {
+      margin: theme.spacing.unit,
+    },
+    input: {
+      display: 'none',
+    },
+  });
+
 class Notifications extends React.Component{
+
     state = {
         title: '',
         content: '',
@@ -46,11 +62,13 @@ class Notifications extends React.Component{
 
         return(
             <div className="notifications">
-            <h2>Notifications</h2>
+            {/* <h3>Notifications</h3> */}
             <div>
 
-                <section>
+                <section className = "notifications-filter">
+                    <div className = "title">
                     <h2>Filter</h2>
+                    </div>
 <form>
     <div className="radio-btns">
   <input type="radio" name="role" value="admin" /> All admins<br />
@@ -61,23 +79,40 @@ class Notifications extends React.Component{
 
 </section>
 
-                <section>
-                    <h2>Add Details</h2>
-<form encType = "multipart/form-data" action = "/api/super-admin/push" method =  "post">
+                <section className = "notifications-form">
+                <div className = "title">
+                 <h2>Add Details</h2>
+                    </div>
+<form>
     <div className = "notifications-firebase-input">
         <p>Choose file* : </p>
         <input type = "file" name="logo" />
     </div>
     <div className = "notifications-firebase-input">
         <p>Title* : </p>
-<input type = "text" className= "notification-firebase" value = {this.state.title} onChange={this.onTitleChange} className = "input" placeholder = "Enter title"/>
+{/* <input type = "text" className= "notification-firebase" value = {this.state.title} onChange={this.onTitleChange} className = "input" placeholder = "Enter title"/> */}
+    
+    <TextField
+          id="standard-multiline-static"
+          rows="4"
+          margin="normal" style = {{marginLeft:'0.3rem'}}
+        />   
     </div>
     <div className = "notifications-firebase-input">
         <p>Message* : </p>
-<input type = "text" className= "notification-firebase" value = {this.state.content} onChange={this.onContentChange} className = "input"  placeholder = "Enter content"/>
-    </div>
-    <button type = "button" onClick = {this.onSubmit}>Submit</button>
-</form> 
+        
+        <TextField
+          id="standard-multiline-static"
+          rows="4"
+          margin="normal" style = {{marginLeft:'0.3rem'}}
+        />    
+        </div >
+    <div className = "notifications-firebase-input">
+    <Button color="primary" type = "button" onClick = {this.onSubmit} style = {{border: '1px solid blue',marginTop:'1.5rem'}}>
+        Submit
+      </Button>
+      </div>
+      </form> 
 </section>
 
             </div>            
@@ -87,6 +122,11 @@ class Notifications extends React.Component{
     }
 }
 
-export default Notifications;
 
+Notifications.propTypes = {
+    classes: PropTypes.object.isRequired,
+  };
+  
+  export default withStyles(styles)(Notifications);
+  
 

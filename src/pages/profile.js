@@ -1,8 +1,39 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
+import { withStyles } from '@material-ui/core/styles';
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
+
 import Cookies from 'universal-cookie';
 
 const cookies = new Cookies();
 const cookie = cookies.get('Kiddo');
+
+const styles = theme => ({
+  container: {
+    display: 'flex',
+    flexWrap: 'wrap',
+  },
+  textField: {
+    marginLeft: theme.spacing.unit,
+    marginRight: theme.spacing.unit,
+    width: 200,
+  },
+  dense: {
+    marginTop: 19,
+  },
+  menu: {
+    width: 200,
+  },
+  button: {
+    margin: theme.spacing.unit,
+  },
+  input: {
+    display: 'none',
+  }
+});
+
 
 class Profile extends React.Component {
 
@@ -21,10 +52,6 @@ class Profile extends React.Component {
   onEmailChange = (event) => {
     this.setState({email: event.target.value})
   }
-
-  // onPasswordChange = (event) => {
-  //   this.setState({password: event.target.value})
-  // }
 
   onGenderChange = (event) => {
     this.setState({gender: event.target.value})
@@ -75,17 +102,22 @@ class Profile extends React.Component {
 
   render() {
 
+    const { classes } = this.props;
+
     if(!this.state.isLoading){
       return <div>Loading...</div>
   }
 
     return (
         <div className="profile">
-         <h2>Edit Profile</h2>
+        <div className = "">
+         <h2>EDIT PROFILE</h2>
+         <hr />
+         </div>
          <article>
          <section className = "user-image">
       <div className="user-pic">
-      <img alt = "profile" src = {this.state.profile[0].logo} style={{width: '148px',borderRadius : '50%',border : '3px groove #e02a64'}}/>
+      <img alt = "profile" src = {this.state.profile[0].logo} style={{width: '148px',borderRadius : '50%',border : '3px groove #5e6e92'}}/>
       </div>
       <h4>{this.state.profile[0].name}</h4>
       <h4>{this.state.profile[0].phone}</h4>
@@ -94,42 +126,64 @@ class Profile extends React.Component {
       <h1>KIDDO</h1>
       </section>
         <section>
-          <h2>Details</h2>
+          <h2>Edit Profile</h2>
           <div className = "user-details">
           <div>
-          <div className = "user-details-indv">
-            <label>Name</label>
-            <input type = "text" className = "input" placeholder= "Enter your name" value = {this.state.name} onChange={this.onNameChange}/>
+          <div className = "user-details-row">
+          <TextField
+          disabled
+          id="standard-disabled"
+          label="Product name"
+          defaultValue="Kiddo"
+          className={classes.textField}
+          margin="normal"
+        />
+          <TextField
+          id="standard-dense"
+          label="Name"
+          className={classNames(classes.textField, classes.dense)}
+          margin="dense" value = {this.state.name} onChange={this.onNameChange}
+        />
+        </div>
+        <div>
+        <TextField
+          id="standard-dense"
+          label="Gender"
+          className={classNames(classes.textField, classes.dense)}
+          margin="dense" value = {this.state.gender} onChange={this.onGenderChange}
+        />
+        </div>
+        <div>
+        <TextField
+          id="standard-full-width"
+          label="Email"
+          className={classNames(classes.textField, classes.dense)}
+          margin="dense"
+          fullWidth value = {this.state.email} onChange={this.onEmailChange}
+        />
+        </div>
+        <div className = "user-details-btn">
+        <Button variant="outlined" color="primary" className={classes.button} type = "button" onClick = {this.onProfileUpdate}>
+        Submit
+      </Button>
+
+        </div>
+
+        </div>
+        <div className = "user-details-image">
+          <img alt = "profile" src = {this.state.profile[0].logo} style={{width: '148px',borderRadius : '50%',border : '3px groove #5e6e92'}} />
+          <input type = "file" className = "input-file" />
+        </div>
           </div>
-          <div className = "user-details-indv">
-            <label>Email</label>
-            <input type = "text" className = "input" placeholder = "Enter your email" value = {this.state.email} onChange={this.onEmailChange}/>
-          </div>
-          <div className = "user-details-indv">
-            <label>Gender</label>
-            <input type = "text" className = "input" placeholder = "Enter your gender" value = {this.state.gender} onChange={this.onGenderChange}/>
-          </div>
-          {/* <div className = "user-details-indv">
-            <label>Password</label>
-            <input type = "text" className = "input" placeholder = "Enter your password" value = {this.state.password} onChange={this.onPasswordChange}/>
-          </div> */}
-          <div>
-            <button type = "button" onClick={this.onProfileUpdate}>Submit</button>
-            </div>
-            </div>
-            <div>
-          <img src = {this.state.profile[0].logo} style={{width: '120px',height: '150px',borderRadius : '50%',border : '3px groove #e02a64'}} alt = "profile"/>
-          {/* <button>Choose file: </button> */}
-          {/* <input type = "button" value = "choose" /> */}
-          </div>
-          </div>
-      
       </section>
-      
       </article>
       </div>
     );
   }
 }
 
-export default Profile;
+Profile.propTypes = {
+  classes: PropTypes.object.isRequired,
+};
+
+export default withStyles(styles)(Profile);
