@@ -34,8 +34,6 @@ class Landing extends Component {
     if(data.success){
       this.setState({ profile: data.user, isLoading: false })
     }
-    console.log(this.state.profile[0].logo);
-
   }
   render() {
     if(this.state.isLoading){

@@ -5,10 +5,6 @@ import TextField from '@material-ui/core/TextField';
 import { withStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 
-// import SearchInput, {createFilter} from 'react-search-input'
-
-// const KEYS_TO_FILTERS = ['this.state.schools.name']
-
 const cookies = new Cookies();
 const cookie = cookies.get('Kiddo');
 
@@ -37,8 +33,8 @@ class School extends Component {
     searchTerm: ''
   }
 
-  searchUpdated = term => {
-    this.setState({searchTerm: term})
+  searchUpdated = event => {
+    this.setState({searchTerm: event.target.value})
   }
 
 
@@ -53,7 +49,6 @@ class School extends Component {
       }
     });
     const data = await res.json();
-    console.log(data);
     if(data.success){
       this.setState({ schools: data.schools, isLoading: true })
     }
@@ -61,14 +56,15 @@ class School extends Component {
 
   render() {
 
+    let filteredSchools = this.state.schools.filter((school) =>{
+      return school.name.toLowerCase().indexOf(this.state.searchTerm) !== -1
+    });
+
     const { classes } = this.props;
 
     if(!this.state.isLoading){
       return <div>Loading...</div>
   }
-
-  // const filteredEmails = ['apple','banana','mango'].filter(createFilter(this.state.searchTerm, KEYS_TO_FILTERS))
-
 
     return (
       <div className="schools">
@@ -85,8 +81,10 @@ class School extends Component {
           label="Search"
           type="search"
           className={classes.textField}
-          margin="normal"
-        />   </div>    
+          margin="normal" onChange = {this.searchUpdated}
+        /> 
+        
+         </div>    
           <table>
              <thead>
              <tr>
@@ -97,7 +95,7 @@ class School extends Component {
              </tr>
              </thead>
              <tbody>
-             {this.state.schools.map(school =>  (
+             {filteredSchools.map(school =>  (
               //  <Link to = {school._id}>
                     <tr key = {school._id}>
                     <td><div style ={{borderRadius: '10%',width:'fit-content'}}><img alt = "logo" src = {school.logo} style = {{width:'25px',height:'25px'}}/></div></td>

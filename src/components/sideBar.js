@@ -32,8 +32,8 @@ class SideBar extends Component {
         <ul>
           <Link to = "/landing/dashboard"><li><i className="fa fa-th-large" aria-hidden="true" style = {{color:'yellow'}}></i>Dashboard</li></Link>
           <Link to = "/landing/schools"><li><i className="fas fa-school" style={{color:"#70e2ef"}}></i>Schools</li></Link>
-          <Link to = "/landing/profile"><li><i className="fas fa-user-circle" style={{color:"orange"}}></i>Profile</li></Link>
-          <Link to = "/landing/notifications"><li><i className="fas fa-bell"></i>Notifications</li></Link>
+          <Link to = "/landing/profile"><li><i className="fas fa-user-circle" style={{color:"#3b00b3"}}></i>Profile</li></Link>
+          <Link to = "/landing/notifications"><li><i className="fas fa-bell" style={{color:"red"}}></i>Notifications</li></Link>
         </ul>
       </nav>
       {/* <div className="productName logout">

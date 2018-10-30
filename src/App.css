@@ -179,8 +179,24 @@ section p{
 }
 
 
+.home{
+  height: 100vh;
+  width: 100vw;
+  background: linear-gradient(#5e6e92, #eaecee);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 
+.home div{
+  margin-bottom: 0.5rem;
+}
 
+.home-content{
+  background-color: #eaecee;
+  padding: 3rem;
+}
 /*
 .schools{
   background-color: #f5f6f7;

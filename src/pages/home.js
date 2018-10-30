@@ -1,7 +1,36 @@
 import Cookies from 'universal-cookie';
 import React from 'react';
+import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
 
 const cookies = new Cookies();
+
+
+const styles = theme => ({
+    button: {
+      margin: theme.spacing.unit,
+    },
+    input: {
+      display: 'none',
+    },
+    container: {
+        display: 'flex',
+        flexWrap: 'wrap',
+      },
+      textField: {
+        marginLeft: theme.spacing.unit,
+        marginRight: theme.spacing.unit,
+        width: 200,
+      },
+      dense: {
+        marginTop: 19,
+      },
+      menu: {
+        width: 400,
+      }
+  });
 
 class Home extends React.Component {
 
@@ -50,10 +79,28 @@ class Home extends React.Component {
       
     return (
       <div className="home">
+      <div className = "home-content">
       <div>
-      <input type="text" className="input" placeholder = "Enter your mobile number" value = {this.state.phone} onChange={this.onPhoneChange}/><br />
-      <input type="password" className="input" placeholder = "Enter your password" value={this.state.password} onChange={this.onPasswordChange}/><br />
-      <button type = "button" onClick={this.onLogin}>Submit</button>
+      <TextField
+          id="standard-dense"
+          label="Phone"
+          margin="dense" className = "input phone"
+          value = {this.state.phone} onChange = {this.onPhoneChange}
+        />
+        </div>
+        <div className = "input password">     
+<TextField
+          id="standard-dense"
+          label="Password"
+          margin="dense"
+          value = {this.state.password}
+          onChange = {this.onPasswordChange}
+        />  
+        </div>
+        <div>    
+        <Button color="primary" style = {{border: '1px solid navy'}} type = "button" onClick = {this.onLogin}>
+       Submit
+      </Button>      </div>
       </div>
 
       </div>
@@ -61,5 +108,8 @@ class Home extends React.Component {
   }
 }
 
+Home.propTypes = {
+    classes: PropTypes.object.isRequired,
+  };
   
-  export default Home;
+  export default withStyles(styles)(Home);
